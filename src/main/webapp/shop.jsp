@@ -37,6 +37,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 </head>
+<style>
+  .list-tat{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+
+  .panigation-item__link {
+    color: #6f6f6f;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+
+  .panigation-item__link.active {
+    color: #6f6f6f;
+    background: #F28123;
+  }
+</style>
 <body>
 
 <c:import url="header.jsp"></c:import>
@@ -66,8 +85,7 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <p>Fresh and Organic</p>
-          <h1>Shop</h1>
+          <h1>Sản Phẩm Của Chúng Tôi</h1>
         </div>
       </div>
     </div>
@@ -83,87 +101,84 @@
       <div class="col-md-12">
         <div class="product-filters">
           <ul>
-            <li class="active" data-filter="*">All</li>
-            <li data-filter=".strawberry">Strawberry</li>
-            <li data-filter=".berry">Berry</li>
-            <li data-filter=".lemon">Lemon</li>
+            <c:set var="activeClass" value="active" />
+            <li class="${empty param.cid ? activeClass : ''}" data-filter="*">
+              <a href="/render">Tất cả</a>
+            </li>
+            <li class="${param.cid == 'TCC' ? activeClass : ''}" data-filter=".strawberry">
+              <a href="/CategoryServlet?cid=TCC" class="nav-item nav-link">Tất cổ cao</a>
+            </li>
+            <li class="${param.cid == 'TCN' ? activeClass : ''}" data-filter=".berry">
+              <a href="/CategoryServlet?cid=TCN" class="nav-item nav-link">Tất cổ ngắn</a>
+            </li>
+            <li class="${param.cid == 'ST' ? activeClass : ''}" data-filter=".lemon">
+              <a href="/CategoryServlet?cid=ST" class="nav-item nav-link">Combo hoặc set</a>
+            </li>
           </ul>
+
         </div>
       </div>
     </div>
 
     <div class="row product-lists">
-      <div class="col-lg-4 col-md-6 text-center strawberry">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+      <c:forEach items="${listSP}" var="p">
+        <div class="col-lg-4 col-md-6 text-center">
+          <div class="single-product-item">
+            <div class="product-image">
+              <a href="<c:url value="/detailP?maSP=${p.pid}"></c:url>"> <img src="${p.image}" alt="">
+            <h3 class="list-tat">${p.name}</h3>
+            <p class="product-price">${p.price}00 VNĐ </p>
+              </a>
+            <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
           </div>
-          <h3>Strawberry</h3>
-          <p class="product-price"><span>Per Kg</span> 85$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center berry">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-          </div>
-          <h3>Berry</h3>
-          <p class="product-price"><span>Per Kg</span> 70$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
         </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center lemon">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-          </div>
-          <h3>Lemon</h3>
-          <p class="product-price"><span>Per Kg</span> 35$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-4.jpg" alt=""></a>
-          </div>
-          <h3>Avocado</h3>
-          <p class="product-price"><span>Per Kg</span> 50$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-5.jpg" alt=""></a>
-          </div>
-          <h3>Green Apple</h3>
-          <p class="product-price"><span>Per Kg</span> 45$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 text-center strawberry">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.jsp"><img src="assets/img/products/product-img-6.jpg" alt=""></a>
-          </div>
-          <h3>Strawberry</h3>
-          <p class="product-price"><span>Per Kg</span> 80$ </p>
-          <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
+      </c:forEach>
     </div>
 
     <div class="row">
       <div class="col-lg-12 text-center">
         <div class="pagination-wrap">
-          <ul>
-            <li><a href="#">Prev</a></li>
-            <li><a href="#">1</a></li>
-            <li><a class="active" href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">Next</a></li>
+          <ul class="panigation home-product-panigation">
+            <li class="panigation-item">
+              <c:if test="${index > 1}">
+                <a href="<c:url value='render?index=${index - 1}'></c:url>" class="panigation-item__link">
+                  <i class="panigation-item__icon fas fa-angle-left"></i>
+                </a>
+              </c:if>
+
+              <c:if test="${index == 1}">
+                <a href="#" class="panigation-item__link">
+                  <i class="panigation-item__icon fas fa-angle-left"></i>
+                </a>
+              </c:if>
+            </li>
+
+            <c:forEach begin="1" end="${endPage}" var="o">
+              <li class="panigation-item">
+                <c:set var="isActive" value="${o eq index}" />
+                <a href="<c:url value='render?index=${o}'></c:url>"
+                   class="panigation-item__link ${isActive ? 'active' : ''}"
+                   id="${o}">
+                    ${o}
+                </a>
+              </li>
+            </c:forEach>
+
+            <li class="panigation-item">
+              <c:if test="${index < endPage}">
+                <a href="<c:url value='render?index=${index + 1}'></c:url>"
+                   class="panigation-item__link">
+                  <i class="panigation-item__icon fas fa-angle-right"></i>
+                </a>
+              </c:if>
+              <c:if test="${index == endPage}">
+                <a href="#"
+                   class="panigation-item__link">
+                  <i class="panigation-item__icon fas fa-angle-right"></i>
+                </a>
+              </c:if>
+            </li>
           </ul>
         </div>
       </div>
@@ -202,26 +217,6 @@
 
 <c:import url="footer.jsp"></c:import>
 
-<!-- jquery -->
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<!-- bootstrap -->
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<!-- count down -->
-<script src="assets/js/jquery.countdown.js"></script>
-<!-- isotope -->
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<!-- waypoints -->
-<script src="assets/js/waypoints.js"></script>
-<!-- owl carousel -->
-<script src="assets/js/owl.carousel.min.js"></script>
-<!-- magnific popup -->
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<!-- mean menu -->
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<!-- sticker js -->
-<script src="assets/js/sticker.js"></script>
-<!-- main js -->
-<script src="assets/js/main.js"></script>
-
+</script>
 </body>
 </html>

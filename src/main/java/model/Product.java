@@ -8,16 +8,19 @@ public class Product {
     private int status;
     private String description;
 
+    private String cateId;
+
     public Product() {
     }
 
-    public Product(String pid, String name, float price, String image, int status, String description) {
+    public Product(String pid, String name, float price, String image, int status, String description, String cateId) {
         this.pid = pid;
         this.name = name;
         this.price = price;
         this.image = image;
         this.status = status;
         this.description = description;
+        this.cateId = cateId;
     }
 
     public String getPid() {
@@ -68,15 +71,24 @@ public class Product {
         this.description = description;
     }
 
+    public String getCateId() {
+        return cateId;
+    }
+
+    public void setCateId(String category) {
+        this.cateId = cateId;
+    }
+
     @Override
     public String toString() {
-        return System.lineSeparator() + '{' +
+        return "Product{" +
                 "pid='" + pid + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
                 ", image='" + image + '\'' +
                 ", status=" + status +
                 ", description='" + description + '\'' +
-                '}' + System.lineSeparator();
+                ", cateId='" + cateId + '\'' +
+                '}';
     }
 }

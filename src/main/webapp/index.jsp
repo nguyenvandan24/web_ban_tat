@@ -38,6 +38,14 @@
 
 
 </head>
+<style>
+    .tat{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+</style>
 <body>
 
 <c:import url="header.jsp"></c:import>
@@ -93,8 +101,8 @@
                         <i class="fas fa-shipping-fast"></i>
                     </div>
                     <div class="content">
-                        <h3>Free Shipping</h3>
-                        <p>When order over $75</p>
+                        <h3>Miễn Phí Vận Chuyển</h3>
+                        <p>Khi mua hóa đơn từ 300.000 VNĐ</p>
                     </div>
                 </div>
             </div>
@@ -104,8 +112,8 @@
                         <i class="fas fa-phone-volume"></i>
                     </div>
                     <div class="content">
-                        <h3>24/7 Support</h3>
-                        <p>Get support all day</p>
+                        <h3>Hỗ Trợ 24/7</h3>
+                        <p>Nhận hỗ trợ cả ngày</p>
                     </div>
                 </div>
             </div>
@@ -115,8 +123,8 @@
                         <i class="fas fa-sync"></i>
                     </div>
                     <div class="content">
-                        <h3>Refund</h3>
-                        <p>Get refund within 3 days!</p>
+                        <h3>Hoàn Trả</h3>
+                        <p>Hòan trả tiền trong 3 ngày nếu sản phẩm có vấn đề!</p>
                     </div>
                 </div>
             </div>
@@ -132,25 +140,45 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                 <div class="section-title">
-                    <h3><span class="orange-text">Our</span> Products</h3>
+                    <h3><span class="orange-text">Sản Phẩm</span> Nổi Bật</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
-            <c:forEach items="${productlist}" var="p">
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="single-product-item">
                         <div class="product-image">
-                            <a href="single-product.jsp"><img src="${p.image}" alt=""></a>
+                            <a href="single-product.jsp"><img src="https://down-vn.img.susercontent.com/file/94efce3d90d1e5eef86fa2761b7f6a88" alt=""></a>
                         </div>
-                        <h3>${p.name}</h3>
-                        <p class="product-price"><span>Per Kg</span> ${p.price} </p>
+                        <h3 class="tat">Tất cổ cao nữ họa tiết cute, vớ nữ chất liệu vải cotton co giãn bốn chiều</h3>
+                        <p class="product-price"><span>Per Kg</span> 18.000 VNĐ </p>
                         <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
                     </div>
                 </div>
-            </c:forEach>
+
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product.jsp"><img src="https://down-vn.img.susercontent.com/file/5266e33cb0af879f142644b1087dcdbb" alt=""></a>
+                    </div>
+                    <h3 class="tat">Combo 5 Đôi Tất cổ cao nam nữ unisex Coffee trơn</h3>
+                    <p class="product-price"><span>Per Kg</span> 80.000 VNĐ </p>
+                    <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 text-center">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="single-product.jsp"><img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lmfm5ejecicfe4" alt=""></a>
+                    </div>
+                    <h3 class="tat">Tất cổ ngắn nữ kiểu dáng hiện đại, dễ phối đồ</h3>
+                    <p class="product-price"><span>Per Kg</span> 12.000 VNĐ </p>
+                    <a href="cart.jsp" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -179,7 +207,7 @@
                 <h4>Hikan Strwaberry</h4>
                 <div class="text">Quisquam minus maiores repudiandae nobis, minima saepe id, fugit ullam similique! Beatae, minima quisquam molestias facere ea. Perspiciatis unde omnis iste natus error sit voluptatem accusant</div>
                 <!--Countdown Timer-->
-                <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2020/2/01"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
+                <div class="time-counter"><div class="time-countdown clearfix" data-countdown="2023/12/10"><div class="counter-column"><div class="inner"><span class="count">00</span>Days</div></div> <div class="counter-column"><div class="inner"><span class="count">00</span>Hours</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Mins</div></div>  <div class="counter-column"><div class="inner"><span class="count">00</span>Secs</div></div></div></div>
                 <a href="cart.jsp" class="cart-btn mt-3"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
             </div>
         </div>
